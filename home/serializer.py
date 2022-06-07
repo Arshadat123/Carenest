@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Hospital
+from .models import *
 
 
 class GetHospitalSerializer(serializers.ModelSerializer):
@@ -11,4 +11,11 @@ class GetHospitalSerializer(serializers.ModelSerializer):
 class GetDoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
-        fields = ["id", "name", "ima_no"]
+        fields = ["id", "name", "specialisation", "working_day", "time_schedule", "online_mode", "ima_no", "rating",
+                  "hospital"]
+
+
+class GetHomeNursesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomeNurses
+        fields = ["id", "name", "experience", "availability"]

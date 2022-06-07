@@ -6,3 +6,4 @@ from . import models
 
 admin.site.register(models.Hospital)
 admin.site.register(models.Doctor)
+admin.site.register(models.HomeNurses)
