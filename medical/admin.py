@@ -3,5 +3,6 @@ from . import models
 
 # Register your models here.
 
-admin.site.register(models.Pharmeasy)
+admin.site.register(models.Pharmasy)
 admin.site.register(models.Profile)
+admin.site.register(models.Lab)
