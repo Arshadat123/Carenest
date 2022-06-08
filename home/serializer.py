@@ -11,8 +11,7 @@ class GetHospitalSerializer(serializers.ModelSerializer):
 class GetDoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
-        fields = ["id", "name", "specialisation", "working_day", "time_schedule", "online_mode", "ima_no", "rating",
-                  "hospital"]
+        fields = ["id", "name", "specialisation", "working_day", "time_schedule", "online_mode", "ima_no", "rating"]
 
 
 class GetHomeNursesSerializer(serializers.ModelSerializer):
