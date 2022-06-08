@@ -5,6 +5,7 @@ from .views import PharmasyViewSet
 
 router = DefaultRouter()
 router.register("pharmeasy", PharmasyViewSet)
+router.register("lab", PharmasyViewSet)
 router.register("profile", PharmasyViewSet)
 urlpatterns = [
     path(r'', include(router.urls)),

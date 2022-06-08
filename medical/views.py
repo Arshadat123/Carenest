@@ -20,3 +20,9 @@ class PharmasyViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     permission_classes = [permissions.AllowAny]
     http_method_names = ["get", "post", "patch"]
+
+class LabViewSet(viewsets.ModelViewSet):
+    serializer_class = GetProfileSerializer
+    queryset = Profile.objects.all()
+    permission_classes = [permissions.AllowAny]
+    http_method_names = ["get", "post", "patch"]

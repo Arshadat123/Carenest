@@ -22,3 +22,13 @@ class Pharmasy(models.Model):
 
     def __str__(self):
         return self.name
+
+class Lab(models.Model):
+    labreport = models.ImageField(upload_to="pic", null=True, blank=True)
+    profile = models.ForeignKey(Profile, related_name="lab", on_delete=models.SET_NULL, null=True, blank=True)
+
+    def blood(self):
+        return self.profile.blood if self.profile else None
+
+    def __str__(self):
+        return self.name + " " + self.profile.blood
