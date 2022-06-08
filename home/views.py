@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets, permissions
-from .serializer import GetDoctorSerializer, GetHomeNursesSerializer, GetHospitalSerializer
-from .models import Doctor, HomeNurses, Hospital
+from .serializer import *
+from .models import *
 
 
 class DoctorViewSet(viewsets.ModelViewSet):
@@ -22,5 +22,26 @@ class HospitalViewSet(viewsets.ModelViewSet):
 class HomeNursesViewSet(viewsets.ModelViewSet):
     serializer_class = GetHomeNursesSerializer
     queryset = HomeNurses.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    http_method_names = ["get", "post", "patch"]
+
+
+class MedicalHistoryViewSet(viewsets.ModelViewSet):
+    serializer_class = GetMedicalHistorySerializer
+    queryset = MedicalHistory.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    http_method_names = ["get", "post", "patch"]
+
+
+class BloodDonationViewSet(viewsets.ModelViewSet):
+    serializer_class = GetBloodDonationSerializer
+    queryset = BloodDonation.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    http_method_names = ["get", "post", "patch"]
+
+
+class WorkingTimeViewSet(viewsets.ModelViewSet):
+    serializer_class = GetWorkingTimeSerializer
+    queryset = WorkingTime.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
