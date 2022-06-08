@@ -18,7 +18,7 @@ class HomeNurses(models.Model):
     name = models.CharField(max_length=30, blank=True, null=True)
     experience = models.IntegerField(blank=True, null=True)
     availability = models.BooleanField(default=True)
-    home_nurse_photo = models.ImageField(upload_to=None, null=True, blank=True)
+    home_nurse_photo = models.ImageField(upload_to="pic", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -29,8 +29,9 @@ class Doctor(models.Model):
     specialisation = models.CharField(max_length=30, blank=True, null=True)
     online_mode = models.BooleanField(default=True)
     rating = models.FloatField(default=3)
-    doctor_photo = models.ImageField(upload_to=None, null=True, blank=True)
+    doctor_photo = models.ImageField(upload_to="pic", null=True, blank=True)
     hospital = models.ForeignKey(Hospital, related_name="doctor", on_delete=models.SET_NULL, null=True, blank=True)
+    working_time = models.ManyToManyField("WorkingTime", related_name="doctor")
 
     def __str__(self):
         return self.name
@@ -43,14 +44,13 @@ class WorkingTime(models.Model):
     starting_time = models.TimeField()
     ending_time = models.TimeField()
 
-    def __str__(self):
-        return self.day
+
 
 
 class MedicalHistory(models.Model):
     date = models.DateField()
     record = models.TextField()
-    prescription_photo = models.ImageField(upload_to=None, null=True, blank=True)
+    prescription_photo = models.ImageField(upload_to="pic", null=True, blank=True)
 
     def __str__(self):
         return self.date
