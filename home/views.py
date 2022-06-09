@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, filters
 from .serializer import *
 from .models import *
 
@@ -10,6 +10,8 @@ class DoctorViewSet(viewsets.ModelViewSet):
     queryset = Doctor.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
+    filter_backends = [filters.SearchFilter, ]
+    search_fields = ['name']
 
 
 class HospitalViewSet(viewsets.ModelViewSet):
@@ -17,6 +19,8 @@ class HospitalViewSet(viewsets.ModelViewSet):
     queryset = Hospital.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
+    filter_backends = [filters.SearchFilter, ]
+    search_fields = ['name']
 
 
 class HomeNursesViewSet(viewsets.ModelViewSet):
@@ -24,6 +28,8 @@ class HomeNursesViewSet(viewsets.ModelViewSet):
     queryset = HomeNurses.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
+    filter_backends = [filters.SearchFilter, ]
+    search_fields = ['name']
 
 
 class MedicalHistoryViewSet(viewsets.ModelViewSet):
@@ -52,4 +58,3 @@ class PhysicalTherapyViewSet(viewsets.ModelViewSet):
     queryset = PhysicalTherapy.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
-
