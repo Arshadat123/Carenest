@@ -61,9 +61,6 @@ class BloodDonation(models.Model):
     phone_number1 = models.IntegerField(null=True, blank=True)
     phone_number2 = models.IntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return self.date
-
 
 class TherapyItems(models.Model):
     name = models.CharField(max_length=30)
