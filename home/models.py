@@ -45,8 +45,6 @@ class WorkingTime(models.Model):
     ending_time = models.TimeField()
 
 
-
-
 class MedicalHistory(models.Model):
     date = models.DateField()
     record = models.TextField()
@@ -63,11 +61,17 @@ class BloodDonation(models.Model):
     phone_number1 = models.IntegerField(null=True, blank=True)
     phone_number2 = models.IntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return self.date
+
+class TherapyItems(models.Model):
+    name = models.CharField(max_length=30)
+    physical_therapy_gif = models.ImageField(upload_to="pic", null=True, blank=True)
 
 
-'''class PhysicalTherapy(models.Model):
-    
-    def __str__(self):
-        return self.name'''
+class PhysicalTherapy(models.Model):
+    day = models.IntegerField()
+    items = models.ManyToManyField(TherapyItems, related_name="physical_therapy")
+
+
+
+
+
