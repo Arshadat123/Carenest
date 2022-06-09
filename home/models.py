@@ -45,8 +45,6 @@ class WorkingTime(models.Model):
     ending_time = models.TimeField()
 
 
-
-
 class MedicalHistory(models.Model):
     date = models.DateField()
     record = models.TextField()
@@ -67,7 +65,16 @@ class BloodDonation(models.Model):
         return self.date
 
 
-'''class PhysicalTherapy(models.Model):
-    
-    def __str__(self):
-        return self.name'''
+class TherapyItems(models.Model):
+    name = models.CharField(max_length=30)
+    physical_therapy_gif = models.ImageField(upload_to="pic", null=True, blank=True)
+
+
+class PhysicalTherapy(models.Model):
+    day = models.IntegerField()
+    items = models.ManyToManyField(TherapyItems, related_name="physical_therapy")
+
+
+
+
+

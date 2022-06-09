@@ -45,3 +45,11 @@ class WorkingTimeViewSet(viewsets.ModelViewSet):
     queryset = WorkingTime.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch"]
+
+
+class PhysicalTherapyViewSet(viewsets.ModelViewSet):
+    serializer_class = GetPhysicalTherapySerializer
+    queryset = PhysicalTherapy.objects.all()
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    http_method_names = ["get", "post", "patch"]
+

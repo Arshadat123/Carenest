@@ -21,7 +21,7 @@ class GetDoctorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Doctor
-        fields = ["id", "name", "specialisation", "online_mode", "rating", "doctor_photo", "hospital","working_time"]
+        fields = ["id", "name", "specialisation", "online_mode", "rating", "doctor_photo", "hospital", "working_time"]
 
 
 class GetHomeNursesSerializer(serializers.ModelSerializer):
@@ -40,3 +40,17 @@ class GetBloodDonationSerializer(serializers.ModelSerializer):
     class Meta:
         model = BloodDonation
         fields = ["id", "date", "blood_bank_name", "blood_bank_location", "phone_number1", "phone_number2"]
+
+
+class GetTherapyItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TherapyItems
+        fields = ["id", "name", "physical_therapy_gif"]
+
+
+class GetPhysicalTherapySerializer(serializers.ModelSerializer):
+    items = GetTherapyItemsSerializer(many=True)
+
+    class Meta:
+        model = PhysicalTherapy
+        fields = ["id", "day","items"]
